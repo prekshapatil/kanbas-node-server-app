@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/prekshapatil/kanbas-node-server-app"
+    "url": "git+https://github.com/prekshapatil/kanbas-node-server-app.git"
   },
   "keywords": [
     "Node",
