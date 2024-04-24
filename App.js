@@ -14,6 +14,7 @@ const CONNECTION_STRING = process.env.DB_CONNECTION_STRING || 'mongodb://127.0.0
 mongoose.connect(CONNECTION_STRING);
 const app = express();
 app.use(express.urlencoded({ extended: true }));
+
 const sessionOptions = {
   secret: "some secret",
   saveUninitialized: false,
@@ -21,15 +22,17 @@ const sessionOptions = {
 };
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
     credentials: true,
+    origin: [process.env.FRONTEND_URL, "http://localhost:3000"]
   })
-);
+ );
+
+
 if (process.env.NODE_ENV !== "development") {
   sessionOptions.proxy = true;
   sessionOptions.cookie = {
     sameSite: "none",
-    secure: true,
+    secure: true
   };
 }
 
